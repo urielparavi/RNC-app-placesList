@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
 import { Colors } from '../../constants/colors';
 
 const OutlinedButton = ({ onPress, icon, children }) => {
@@ -18,6 +19,7 @@ const OutlinedButton = ({ onPress, icon, children }) => {
     </Pressable>
   );
 };
+
 export default OutlinedButton;
 
 const styles = StyleSheet.create({

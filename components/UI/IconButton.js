@@ -11,6 +11,7 @@ const IconButton = ({ icon, size, color, onPress }) => {
     </Pressable>
   );
 };
+
 export default IconButton;
 
 const styles = StyleSheet.create({

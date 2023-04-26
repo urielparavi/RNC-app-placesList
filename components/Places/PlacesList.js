@@ -1,6 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+
 import { Colors } from '../../constants/colors';
+import PlaceItem from './PlaceItem';
 
 const PlacesList = ({ places }) => {
   if (!places || places.length === 0) {
@@ -21,6 +22,7 @@ const PlacesList = ({ places }) => {
     />
   );
 };
+
 export default PlacesList;
 
 const styles = StyleSheet.create({

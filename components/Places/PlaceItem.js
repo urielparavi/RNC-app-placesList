@@ -11,6 +11,7 @@ const PlaceItem = ({ place, onSelect }) => {
     </Pressable>
   );
 };
+
 export default PlaceItem;
 
 const styles = StyleSheet.create({});

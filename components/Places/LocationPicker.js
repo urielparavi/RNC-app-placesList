@@ -1,4 +1,5 @@
-import { View, StyleSheet, Alert, Image, Text } from 'react-native';
+import { useState } from 'react';
+import { Alert, View, StyleSheet, Image, Text } from 'react-native';
 import {
   getCurrentPositionAsync,
   useForegroundPermissions,
@@ -7,15 +8,14 @@ import {
 
 import { Colors } from '../../constants/colors';
 import OutlinedButton from '../UI/OutlinedButton';
-import { useState } from 'react';
-import { getMapPreview } from '../../util/location';
 import { useNavigation } from '@react-navigation/native';
 
-const LocationPicker = () => {
-  const navigation = useNavigation();
+import { getMapPreview } from '../../util/location';
 
+const LocationPicker = () => {
   const [pickedLocation, setPickedLocation] = useState();
 
+  const navigation = useNavigation();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
 
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    // borderRadius: 4,
+    // borderRadius: 4
   },
 });
