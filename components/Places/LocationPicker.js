@@ -15,7 +15,7 @@ import {
 } from '@react-navigation/native';
 import { getMapPreview } from '../../util/location';
 
-const LocationPicker = () => {
+const LocationPicker = ({ onPickLocation }) => {
   const [pickedLocation, setPickedLocation] = useState();
   // This will switch to false when we enter the map and true when we come back from the map
   const isFocused = useIsFocused();
@@ -35,6 +35,10 @@ const LocationPicker = () => {
       setPickedLocation(mapPickedLocation);
     }
   }, [route, isFocused]);
+
+  useEffect(() => {
+    onPickLocation(pickedLocation);
+  }, [pickedLocation, onPickLocation]);
 
   const verifyPermissions = async () => {
     if (
