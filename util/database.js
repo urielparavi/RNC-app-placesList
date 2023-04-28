@@ -7,12 +7,12 @@ export const init = () => {
     database.transaction((tx) => {
       tx.executeSql(
         `CREATE TABLE IF NOT EXISTS places (
-        id INTEGER PRIMARY KEY NOT NULL,
-        title TEXT NOT NULL,
-        imageUri TEXT NOT NULL,
-        address TEXT NOT NULL,
-        lat REAL NOT NULL,
-        lng REAL NOT NULL,
+          id INTEGER PRIMARY KEY NOT NULL,
+          title TEXT NOT NULL,
+          imageUri TEXT NOT NULL,
+          address TEXT NOT NULL,
+          lat REAL NOT NULL,
+          lng REAL NOT NULL
         )`,
         [],
         () => {
@@ -30,7 +30,7 @@ export const init = () => {
 
 export const insertPlace = (place) => {
   const promise = new Promise((resolve, reject) => {
-    database.transaction(() => {
+    database.transaction((tx) => {
       // We insert the columns to db
       tx.executeSql(
         `INSERT INTO places (title, imageUri, address, lat, lng) VALUES (?, ?, ?, ?, ?)`,
@@ -44,7 +44,6 @@ export const insertPlace = (place) => {
         ],
         // The first argument is the transaction that I don't need, and the second is the result of this query
         (_, result) => {
-          console.log(result);
           resolve(result);
         },
         // The first argument is the transaction that I don't need, and the second is the error
