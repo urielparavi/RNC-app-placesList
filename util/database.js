@@ -27,3 +27,32 @@ export const init = () => {
   });
   return promise;
 };
+
+export const insertPlace = (place) => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction(() => {
+      // We insert the columns to db
+      tx.executeSql(
+        `INSERT INTO places (title, imageUri, address, lat, lng) VALUES (?, ?, ?, ?, ?)`,
+        // We put in the order the values in the array the concrete values instead of this question mark
+        [
+          place.title,
+          place.imageUri,
+          place.address,
+          place.location.lat,
+          place.location.lng,
+        ],
+        // The first argument is the transaction that I don't need, and the second is the result of this query
+        (_, result) => {
+          console.log(result);
+          resolve(result);
+        },
+        // The first argument is the transaction that I don't need, and the second is the error
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+  return promise;
+};
