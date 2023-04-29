@@ -102,8 +102,15 @@ export const fetchPlaceDetails = (id) => {
         'SELECT * FROM places WHERE id = ?',
         [id],
         (_, result) => {
+          const dbPlace = result.rows._array[0];
+          const place = new Place(
+            dbPlace.title,
+            dbPlace.imageUri,
+            { lat: dbPlace.lat, lng: dbPlace.lng, address: dbPlace.address },
+            dbPlace.id
+          );
           // console.log(JSON.stringify(result));
-          resolve(result.rows._array[0]);
+          resolve(place);
         },
         (_, error) => {
           reject(error);
