@@ -60,9 +60,9 @@ export const insertPlace = (place) => {
 export const fetchPlaces = () => {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
-      // The array is empty because we don't have any placeholders
       tx.executeSql(
         'SELECT * FROM places',
+        // The array is empty because we don't have any placeholders
         [],
         (_, result) => {
           // We convert this to an array of places objects that use our model
